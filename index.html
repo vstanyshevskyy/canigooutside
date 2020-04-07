@@ -60,10 +60,15 @@
       }
     </style>
     <script>
-      window.addEventListener('resize', () => {
-        let vh = window.innerHeight * 0.01;
+      var setVh = function() {
+        if (!document.documentElement.style.setProperty) {
+          return;
+        }
+        var vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
-      });
+      }
+      setVh();
+      window.addEventListener('resize', setVh);
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
